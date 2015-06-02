@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/logo2.PNG</file>
+        <file>image/logo2.ico</file>
+        <file>image/splash.PNG</file>
+        <file>image/bitbug_favicon.ico</file>
+        <file>image/dowm2.ico</file>
+        <file>image/down.ico</file>
+    </qresource>
+</RCC>

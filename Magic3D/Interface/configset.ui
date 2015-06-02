@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ConfigSet</class>
+ <widget class="QDialog" name="ConfigSet">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>251</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QRadioButton
+{
+font-family:&quot;Source Sans Pro&quot;;
+	 font-size: 16px;
+    font-weight: regular;
+	color:#FFF;
+}
+QLineEdit
+{	
+	color: rgb(255, 255, 255);
+}
+QLabel
+{
+	font-family:&quot;Source Sans Pro&quot;;
+	 font-size: 16px;
+    font-weight: regular;
+	color:#FFF;
+}
+QWidget
+{
+	background-color: rgb(86, 86, 86);
+}
+QPushButton,QToolButton
+{
+    color: #424344;
+    font-family: &quot;Source Sans Pro&quot;;
+    font-size: 11px;
+    font-weight: regular;
+}
+
+
+QPushButton,QToolButton
+{
+    border: 1px solid yellow; /* dummy color -- is overridden below */
+}
+
+QPushButton,QToolButton
+{
+    border-radius: 4px;
+    padding: 0px 15px;
+   ;
+    max-height: 100px;
+    min-height: 25px;
+}
+
+QPushButton,QToolButton
+{
+    border-color: #C0C1C3;
+    background-color: #F6F7F9;
+}
+
+QPushButton:hover,QToolButton:hover
+{
+    background-color: #FFF;
+}
+
+QToolButton:pressed, QPushButton:pressed, QPushButton[btn-secondary=true]:pressed, QPushButton[btn-icon=true]:pressed
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #E0E1E3, stop:.25 #F6F7F9);
+}
+
+/*QToolButton:disabled,*/ 
+QPushButton:disabled
+{
+    background-color: #EAEBED;
+    border-color: #E1E2E4;
+    color: #C0C1C3;
+}
+QPushButton,QToolButton
+{
+    background-color: #2288C1;
+    border-color: #006fa5;
+    color: #fff;
+}
+
+QPushButton:hover,QToolButton:hover
+{
+    background-color: #6C22E2;
+}
+
+QPushButton:pressed
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #0072a9, stop:.25 #2288C1);
+}
+
+
+</string>
+  </property>
+  <widget class="QFrame" name="frame_title">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>-1</y>
+     <width>400</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame
+{
+	
+	background-color: rgb(244, 244, 244);
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QFrame" name="frame_title_2">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>1</y>
+      <width>402</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame
+{
+	border-top-left-radius:8px;
+    border-top-right-radius: 8px;
+	background-color: rgb(34, 136, 193);
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>50</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Please choose your machine:</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>110</y>
+     <width>201</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GuangSu-1024x768</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>150</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GuangSu-1920x1080</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="OK_pushButton">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>196</y>
+     <width>75</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>OK_pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ConfigSet</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>187</x>
+     <y>211</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

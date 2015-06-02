@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainButton</class>
+ <widget class="QWidget" name="MainButton">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>90</width>
+    <height>131</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+	background-color: rgb(244, 244, 244);
+	border-radius: 12px;
+}
+QPushButton,QToolButton
+{
+   /* color: #424344;*/
+    font-family: &quot;Source Sans Pro&quot;;
+    font-size: 11px;
+    font-weight: regular;
+ 	border: 1px solid yellow;
+ 	border-radius: 4px;
+    padding: 0px 15px;   
+    max-height: 100px;
+    min-height: 25px;
+	min-weight:52px;
+
+ 	background-color: rgb(108,113,201);
+
+    border-color: rgb(155,155,155);
+    color: #fff;
+}
+
+QToolButton:pressed, QPushButton:pressed, QPushButton[btn-secondary=true]:pressed, QPushButton[btn-icon=true]:pressed
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #E0E1E3, stop:.25 #F6F7F9);
+}
+
+QPushButton:disabled
+{
+    background-color: #EAEBED;
+    border-color: #E1E2E4;
+    color: #C0C1C3;
+}
+
+QPushButton:pressed,QToolButton:pressed
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #0072a9, stop:.25 #2288C1);
+}
+QPushButton:hover,QToolButton:hover
+{
+    background-color: #6C22E2;
+}
+
+</string>
+  </property>
+  <widget class="QPushButton" name="ModelButton">
+   <property name="geometry">
+    <rect>
+     <x>3</x>
+     <y>8</y>
+     <width>79</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Source Sans Pro</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="toolTip">
+    <string>Model edit interface</string>
+   </property>
+   <property name="text">
+    <string>编辑</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SupportMode">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>47</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Source Sans Pro</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="toolTip">
+    <string>Support edit </string>
+   </property>
+   <property name="text">
+    <string>设置</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="PrintMode">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>86</y>
+     <width>81</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Source Sans Pro</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="toolTip">
+    <string>Print setting</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>打印</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
