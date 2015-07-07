@@ -32,8 +32,8 @@ GreenTech::GreenTech(QWidget *parent) :
     SliderValue = -1;
     LayThickness = 100;
     AddBase = false;
-    setWindowTitle(tr("魔法3D"));
-    setWindowIcon(QIcon(":/image/logo2.ico"));
+    setWindowTitle(tr("游侠三维"));
+    setWindowIcon(QIcon(":/image/logo1.ico"));
     //Create the worldview and attach it to the window
     pWorldView = new WorldView(0,this);
     QGraphicsView *view = ui->graphicsView;         //操控ui上的graphicsView

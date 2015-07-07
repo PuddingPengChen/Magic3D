@@ -76,7 +76,7 @@ ConfigSettings::ConfigSettings()
 
     SETTING(fixHorrible, 0);
     SETTING(spiralizeMode, 0);
-    SETTING(gcodeFlavor, GCODE_FLAVOR_REPRAP);//设置G-code种类
+    SETTING(gcodeFlavor, GCODE_FLAVOR_ULTIGCODE);//设置G-code种类
 
     memset(extruderOffset, 0, sizeof(extruderOffset));
     SETTING(extruderOffset[1].X, 0);
