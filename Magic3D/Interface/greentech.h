@@ -213,6 +213,7 @@ private:
 
     bool AddBase;
 
+
     ModelEdit *m_ModelEdit;
     QListWidget *m_ModelList;
     QLineEdit *m_ModelScale;

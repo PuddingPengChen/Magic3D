@@ -387,8 +387,9 @@ ModelInstance* GreenTech::AddModel(QString filepath, bool bypassVisuals)
     if(filepath.isEmpty())
     {
         filepath = QFileDialog::getOpenFileName(this,
-            tr("Open Model"), settings.value("WorkingDir").toString(), tr("Models (*.stl)"));
+            tr("打开模型"), settings.value(tr("目录")).toString(), tr("Models (*.stl)"));
         modelPath = filepath;
+        qDebug()<<tr("in add model: filepath =%1").arg(filepath);
         //cancel button
         if(filepath.isEmpty())
             return NULL;
@@ -407,9 +408,8 @@ ModelInstance* GreenTech::AddModel(QString filepath, bool bypassVisuals)
             return ModelDataList[i]->AddInstance();//make a new instance
         }
     }
-
-    ModelData* pNewModel = new ModelData(this,bypassVisuals);
-
+    ModelData* pNewModel;
+    pNewModel = new ModelData(this,bypassVisuals);
     bool success = pNewModel->LoadIn(filepath);
     if(!success)
     {

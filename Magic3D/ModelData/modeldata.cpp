@@ -13,7 +13,7 @@
 ModelData::ModelData(GreenTech* main, bool bypassDisplayLists)
 {
 	pMain = main;
-	filepath = "";
+    filepaths = "";
     loadedcount = 0;
     displaySkipping = 0;
     bypassDispLists = bypassDisplayLists;
@@ -43,30 +43,30 @@ ModelData::~ModelData()
 }
 QString ModelData::GetFilePath()
 {	
-	return filepath;
+    return filepaths;
 }
 QString ModelData::GetFileName()
 {
 	return filename;
 }
 //data loading
-bool ModelData::LoadIn(QString filepath)
+bool ModelData::LoadIn(QString filepath_p)
 {	
     bool loaderReady;
     bool abort;
 
     STLTri* pLoadedTri = NULL;
     Triangle3D newtri;
-
-	this->filepath = filepath;
+//    filepaths = " ";
+//    filepaths = filepath_p;
 	
-	if(filepath.isEmpty())
+    if(filepath_p.isEmpty())
 		return false;
 	
 	//extract filename from path!
-    filename = QFileInfo(filepath).fileName();
+    filename = QFileInfo(filepath_p).fileName();
 
-    ModelLoader mLoader(filepath,loaderReady,NULL);
+    ModelLoader mLoader(filepath_p,loaderReady,NULL);
 
     if(loaderReady == false)//error opening model data
 	{

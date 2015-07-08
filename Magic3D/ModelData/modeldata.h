@@ -53,6 +53,7 @@ public:
 	
 	QString GetFilePath();
 	QString GetFileName();
+    void clean(){normDispLists.clear();flippedDispLists.clear();triList.clear();instList.clear();}
 	
 	//data loading
 	bool LoadIn(QString filepath); //returns success
@@ -80,12 +81,10 @@ public:
 
     std::vector<ModelInstance*> instList;             //临时模型列表，ModelInstance是本类的朋友类
    GreenTech* pMain;
-private:
-	
-	
-	
-	QString filepath;//physical filepath
-	QString filename;//filename (larry.stl)
+   QString filepaths;//physical filepath
+   QString filename;//filename (larry.stl)
+private:	
+
 
 	//utility
 	void CenterModel();//called by loadin to adjust the model to have a center at 0,0,0
