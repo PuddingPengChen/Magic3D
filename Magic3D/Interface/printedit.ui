@@ -21,8 +21,7 @@
     <normaloff>:/image/logo2.PNG</normaloff>:/image/logo2.PNG</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QWidget
+   <string notr="true">QWidget
 {
 	background-color: rgb(244, 244, 244);
 }
@@ -44,12 +43,7 @@ QWidget
 	background-color: rgb(116, 126, 146);
 	border-radius: 12px;
 }
-QComboBox
-{
-	border-radius: 4px;
-	background-color: rgb(155, 156, 155);
-	color:rgb(255,255,255);
-}
+
 /*QComboBox::drop-down
 {
 	
@@ -136,7 +130,7 @@ QGroupBox
       <x>140</x>
       <y>110</y>
       <width>131</width>
-      <height>121</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="styleSheet">
