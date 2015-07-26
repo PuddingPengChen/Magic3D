@@ -1,6 +1,7 @@
 /** Copyright (C) 2013 David Braam - Released under terms of the AGPLv3 License */
 #include "bridge.h"
 #include "utils/polygondebug.h"
+#define M_PIs		3.14159265358979323846
 
 int bridgeAngle(SliceLayerPart* part, SliceLayer* prevLayer)
 {
@@ -49,7 +50,7 @@ int bridgeAngle(SliceLayerPart* part, SliceLayer* prevLayer)
     Point center1 = islands[idx1].centerOfMass();
     Point center2 = islands[idx2].centerOfMass();
     
-    double angle = atan2(center2.X - center1.X, center2.Y - center1.Y) / M_PI * 180;
+    double angle = atan2(center2.X - center1.X, center2.Y - center1.Y) / M_PIs * 180;
     if (angle < 0) angle += 360;
     return angle;
 }

@@ -309,7 +309,7 @@ private:
 
     void writeGCode(SliceDataStorage& storage)
     {
-        if (fileNr == 1)
+        if (fileNr == 1)    //判断是否是开头？
         {
             if (gcode.getFlavor() == GCODE_FLAVOR_ULTIGCODE)
             {

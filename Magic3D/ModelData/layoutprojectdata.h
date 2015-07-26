@@ -5,6 +5,7 @@
 #include <QVector3D>
 #include <QVector2D>
 #include <vector>
+#include <QFileDialog>
 #include "../Interface/greentech.h"
 
 #define LAYOUT_FILE_VERSION 15

@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "./Interface/greentech.h"
 #include "OS_Function.h"
 #include <QSplashScreen>
@@ -7,8 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication::setStyle(QStyleFactory::create("Fusion"));
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
+//    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf8"));
     QApplication a(argc, argv);
 
     QSplashScreen splash(QPixmap(":/image/splash.PNG"));

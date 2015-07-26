@@ -113,9 +113,9 @@ QString CROSS_OS_GetDirectoryFromLocationTag(QString locationtag)
 {
     //Make sure the paths exist.
     #ifdef Q_OS_WIN
-        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
-        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + "/Creator");
-        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::TempLocation) + "/Creator");
+//        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DataLocation));
+//        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + "/Creator");
+//        QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::TempLocation) + "/Creator");
     #endif
     #ifdef Q_OS_MAC
         QDir().mkpath(QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + "/Creator");
@@ -131,7 +131,7 @@ QString CROSS_OS_GetDirectoryFromLocationTag(QString locationtag)
     if(locationtag == "APPLICATION_DIR")
     {
         #ifdef Q_OS_WIN // User/AppData/Local/Creatoions LLC/Creator
-            dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+//            dir = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
         #endif
         #ifdef Q_OS_MAC//AppBundle/content/resources
             QDir recources = QDir(QCoreApplication::applicationDirPath());
@@ -147,14 +147,14 @@ QString CROSS_OS_GetDirectoryFromLocationTag(QString locationtag)
     {
         dir = QCoreApplication::applicationDirPath()+"/3GreenTech";
     }
-    if(locationtag == "TEMP_DIR")
-    {
-        dir = QDesktopServices::storageLocation(QDesktopServices::TempLocation) + "/Creator";
-    }
-    if(locationtag == "DOCUMENTS_DIR")
-    {
-        dir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + "/Creator";
-    }
+//    if(locationtag == "TEMP_DIR")
+//    {
+//        dir = QDesktopServices::storageLocation(QDesktopServices::TempLocation) + "/Creator";
+//    }
+//    if(locationtag == "DOCUMENTS_DIR")
+//    {
+//        dir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation) + "/Creator";
+//    }
 
     return QDir(dir).absolutePath();
 }

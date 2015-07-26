@@ -15,7 +15,7 @@
 ConfigSettings::ConfigSettings()
 {
     SETTING(layerThickness, 100);
-    SETTING(initialLayerThickness, 300);
+    SETTING(initialLayerThickness, 100);
     SETTING(filamentDiameter, 2890);
     SETTING(filamentFlow, 100);
     SETTING(layer0extrusionWidth, 600);

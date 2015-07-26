@@ -15,6 +15,7 @@ Integer points are used to avoid floating point rounding errors, and because Cli
 #include <stdint.h>
 #include <math.h>
 
+#define M_PIs		3.14159265358979323846
 #define INT2MM(n) (double(n) / 1000.0)
 #define MM2INT(n) (int64_t((n) * 1000))
 
@@ -157,7 +158,7 @@ public:
     
     PointMatrix(double rotation)
     {
-        rotation = rotation / 180 * M_PI;
+        rotation = rotation / 180 * M_PIs;
         matrix[0] = cos(rotation);
         matrix[1] = -sin(rotation);
         matrix[2] = -matrix[1];

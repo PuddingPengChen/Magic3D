@@ -1,5 +1,6 @@
 /** Copyright (C) 2013 David Braam - Released under terms of the AGPLv3 License */
 #include "skin.h"
+#define M_PIs		3.14159265358979323846
 
 void generateSkins(int layerNr, SliceVolumeStorage& storage, int extrusionWidth, int downSkinCount, int upSkinCount, int infillOverlap)
 {
@@ -40,7 +41,7 @@ void generateSkins(int layerNr, SliceVolumeStorage& storage, int extrusionWidth,
         
         part->skinOutline = upskin.unionPolygons(downskin);
 
-        double minAreaSize = (2 * M_PI * INT2MM(extrusionWidth) * INT2MM(extrusionWidth)) * 0.3;
+        double minAreaSize = (2 * M_PIs * INT2MM(extrusionWidth) * INT2MM(extrusionWidth)) * 0.3;
         for(unsigned int i=0; i<part->skinOutline.size(); i++)
         {
             double area = INT2MM(INT2MM(fabs(part->skinOutline[i].area())));

@@ -164,7 +164,7 @@ SupportPolyGenerator::SupportPolyGenerator(SupportStorage& storage, int32_t z)
     if (!storage.generated)
         return;
     
-    cosAngle = cos(double(90 - storage.angle) / 180.0 * M_PI) - 0.01;
+    cosAngle = cos(double(90 - storage.angle) / 180.0 * M_PIs) - 0.01;
     this->supportZDistance = storage.ZDistance;
 
     done = new int[storage.gridWidth*storage.gridHeight];

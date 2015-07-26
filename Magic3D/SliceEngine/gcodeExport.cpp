@@ -13,7 +13,7 @@
 #define ftello64 ftello
 #define fseeko64 fseeko
 #endif
-
+#define M_PIs		3.14159265358979323846
 GCodeExport::GCodeExport()
 : currentPosition(0,0,0)
 {
@@ -99,7 +99,7 @@ bool GCodeExport::isOpened()
 
 void GCodeExport::setExtrusion(int layerThickness, int filamentDiameter, int flow)
 {
-    double filamentArea = M_PI * (INT2MM(filamentDiameter) / 2.0) * (INT2MM(filamentDiameter) / 2.0);
+    double filamentArea = M_PIs * (INT2MM(filamentDiameter) / 2.0) * (INT2MM(filamentDiameter) / 2.0);
     if (flavor == GCODE_FLAVOR_ULTIGCODE)//UltiGCode uses volume extrusion as E value, and thus does not need the filamentArea in the mix.
         extrusionPerMM = INT2MM(layerThickness);
     else
