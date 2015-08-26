@@ -104,8 +104,10 @@ QPushButton:hover,QToolButton:hover
     background-color: #6C22E2;
 }
 
-QRadioButton{
-	color:#fff;
+QRadioButton
+{	
+	background-color: rgb(116, 126, 146);   
+	color: rgb(255, 255, 255);
 }
 QGroupBox
 {
@@ -154,8 +156,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QToolButton" name="toolButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>220</y>
+      <x>80</x>
+      <y>210</y>
       <width>52</width>
       <height>27</height>
      </rect>
@@ -427,6 +429,22 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>切片</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="radioButton">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>248</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>密集支撑</string>
     </property>
    </widget>
   </widget>

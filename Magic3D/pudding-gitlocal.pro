@@ -1,5 +1,5 @@
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-QMAKE_CXXFLAGS += -std=c++11
+
 
 QT       += core gui
 QT       += svg

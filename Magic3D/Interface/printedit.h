@@ -49,7 +49,7 @@ private slots:
     //get the serialcom list
     QString getcomm(int index, QString keyorvalue);
     void init_comm();
-
+    void on_radioButton_clicked(bool checked);
 
 private:
     Ui::PrintEdit *ui;
@@ -78,6 +78,7 @@ signals:
     void Sig_Slice();
     void Sig_Thickness(int);
     void Sig_ComError(QString);
+    void Sig_curaSupport(bool);
 };
 
 #endif // PRINTEDIT_H

@@ -135,7 +135,7 @@ public slots:
     void SetToolSupportDelete();
 
     void ExitToolAction();//use to panic out of a mouse down tool action.
-
+    void SupportKind(bool type);
     //contour aid
     void OnToggleContourAid(bool tog);
     bool ContourAidEnabled();

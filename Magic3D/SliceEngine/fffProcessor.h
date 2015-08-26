@@ -32,7 +32,10 @@ public:
         fileNr = 1;
         maxObjectHeight = 0;
     }
-
+    void setSupport(int io)
+    {
+        config.supportAngle = io;
+    }
     void guiConnect(int portNr)
     {
 //        guiSocket.connectTo("127.0.0.1", portNr);
@@ -115,7 +118,6 @@ private:
                 while(vertexCount)
                 {
                     float f[3];
-                    guiSocket.recvAll(f, 3 * sizeof(float));
                     FPoint3 fp(f[0], f[1], f[2]);
                     v[pNr++] = config.matrix.apply(fp);
                     if (pNr == 3)
@@ -217,16 +219,6 @@ private:
                 if (layerNr == 0)
                     extrusionWidth = config.layer0extrusionWidth;
                 generateInsets(layer, extrusionWidth, insetCount);
-
-//                for(unsigned int partNr=0; partNr<layer->parts.size(); partNr++)
-//                {
-//                    if (layer->parts[partNr].insets.size() > 0)
-//                    {
-//                        sendPolygonsToGui("inset0", layerNr, layer->printZ, layer->parts[partNr].insets[0]);
-//                        for(unsigned int inset=1; inset<layer->parts[partNr].insets.size(); inset++)
-//                            sendPolygonsToGui("insetx", layerNr, layer->printZ, layer->parts[partNr].insets[inset]);
-//                    }
-//                }
             }
             logProgress("inset",layerNr+1,totalLayers);
         }
@@ -268,8 +260,7 @@ private:
                     generateSparse(layerNr, storage.volumes[volumeIdx], extrusionWidth, config.downSkinCount, config.upSkinCount);
 
                     SliceLayer* layer = &storage.volumes[volumeIdx].layers[layerNr];
-                    for(unsigned int partNr=0; partNr<layer->parts.size(); partNr++)
-                        sendPolygonsToGui("skin", layerNr, layer->printZ, layer->parts[partNr].skinOutline);
+
                 }
             }
             logProgress("skin",layerNr+1,totalLayers);
@@ -290,7 +281,7 @@ private:
         generateSkirt(storage, config.skirtDistance, config.layer0extrusionWidth, config.skirtLineCount, config.skirtMinLength, config.initialLayerThickness);
         generateRaft(storage, config.raftMargin);
 
-        sendPolygonsToGui("skirt", 0, config.initialLayerThickness, storage.skirt);
+
 
         for(unsigned int volumeIdx=0; volumeIdx<storage.volumes.size(); volumeIdx++)
         {
@@ -338,10 +329,7 @@ private:
         gcode.writeComment("Layer count: %d", totalLayers);
 
         if (config.raftBaseThickness > 0 && config.raftInterfaceThickness > 0)
-        {
-//            sendPolygonsToGui("support", 0, config.raftBaseThickness, storage.raftOutline);
-//            sendPolygonsToGui("support", 0, config.raftBaseThickness + config.raftInterfaceThickness, storage.raftOutline);
-            
+        {   
             GCodePathConfig raftBaseConfig(config.initialLayerSpeed, config.raftBaseLinewidth, "SUPPORT");
             GCodePathConfig raftInterfaceConfig(config.initialLayerSpeed, config.raftInterfaceLinewidth, "SUPPORT");
             {
@@ -535,7 +523,6 @@ private:
             }
 
             gcodeLayer.addPolygonsByOptimizer(fillPolygons, &fillConfig);
-            //sendPolygonsToGui("infill", layerNr, layer->z, fillPolygons);
 
             //After a layer part, make sure the nozzle is inside the comb boundary, so we do not retract on the perimeter.
             if (!config.spiralizeMode || int(layerNr) < config.downSkinCount)

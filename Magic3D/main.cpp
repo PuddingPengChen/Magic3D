@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
     }
 
     //import premade stls for support structures
-//    SupportStructure::ImportAttachmentDataFromStls();
-//    SupportStructure::FillRegistryDefaults();
+    SupportStructure::ImportAttachmentDataFromStls();
+    SupportStructure::FillRegistryDefaults();
     qDebug() << "Program Start";
     qDebug() << "Relevent Used Application Directories";
     qDebug() << "   EXECUTABLE_DIR: " << CROSS_OS_GetDirectoryFromLocationTag("EXECUTABLE_DIR");

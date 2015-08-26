@@ -180,6 +180,7 @@ void GreenTech::BuildInterface()
     connect(this,SIGNAL(Sig_StorageToImage(SliceDataStorage*)),ImageWidget,SLOT(ReceiveStroage(SliceDataStorage*)));
     connect(ImageWidget,SIGNAL(Sig_SliderValue(int)),this,SLOT(ReceiveSliderValue(int)));
     connect(ImageWidget,SIGNAL(Sig_printEditShow()),this,SLOT(ShowPrintEdit()));
+    connect(print_dialog,SIGNAL(Sig_curaSupport(bool)),this,SLOT(SupportKind(bool)));
     /*************************************/
     /*      menubar's action set         */
     /*************************************/
@@ -235,15 +236,15 @@ void GreenTech::BuildInterface()
     /*************************************/
     /*      for support mode's action    */
     /*************************************/
-    connect(ui->actionBack_View,SIGNAL(activated()),this,SLOT(ChangeToModelMode()));
-    connect(ui->actionAuto_Support,SIGNAL(activated()),pWorldView,SLOT(AutoSupport()));
-    connect(ui->actionDeleteSupport,SIGNAL(activated()),this,SLOT(ChangeDelectedSupprt()));
-    connect(ui->actionManuAddSupport,SIGNAL(activated()),this,SLOT(ChangeManuAddSupport()));
-    connect(ui->actionLight_support,SIGNAL(activated()),this,SLOT(ResetSupportLight()));
-    connect(ui->actionMedium_support,SIGNAL(activated()),this,SLOT(ResetSupportMedium()));
-    connect(ui->actionHeavy_support,SIGNAL(activated()),this,SLOT(ResetSupportHeavy()));
-    connect(ui->actionAddBasePlate,SIGNAL(activated()),this,SLOT(AddBasePlate()));
-    connect(ui->actionRemoveAll,SIGNAL(activated()),this,SLOT(RemoveAllSupport()));
+    connect(ui->actionBack_View,SIGNAL(triggered()),this,SLOT(ChangeToModelMode()));
+    connect(ui->actionAuto_Support,SIGNAL(triggered()),pWorldView,SLOT(AutoSupport()));
+    connect(ui->actionDeleteSupport,SIGNAL(triggered()),this,SLOT(ChangeDelectedSupprt()));
+    connect(ui->actionManuAddSupport,SIGNAL(triggered()),this,SLOT(ChangeManuAddSupport()));
+    connect(ui->actionLight_support,SIGNAL(triggered()),this,SLOT(ResetSupportLight()));
+    connect(ui->actionMedium_support,SIGNAL(triggered()),this,SLOT(ResetSupportMedium()));
+    connect(ui->actionHeavy_support,SIGNAL(triggered()),this,SLOT(ResetSupportHeavy()));
+    connect(ui->actionAddBasePlate,SIGNAL(triggered()),this,SLOT(AddBasePlate()));
+    connect(ui->actionRemoveAll,SIGNAL(triggered()),this,SLOT(RemoveAllSupport()));
 
      ui->viewToolBar->addAction(ui->actionBack_View);
      ui->actionBack_View->setText("Out Support");
@@ -268,8 +269,6 @@ void GreenTech::BuildInterface()
      ui->supportEdit->addAction(ui->actionMedium_support);
      ui->supportEdit->addAction(ui->actionHeavy_support);
      ui->supportEdit->hide();
-
-
 }
 
 void GreenTech::UpdateInterface()
@@ -814,7 +813,6 @@ void GreenTech::SetSupportMode(bool tog)
     else if(!tog && (currInstanceInSupportMode != NULL))
     {
         qDebug() << "Exiting Support Mode";
-
         if(currInstanceInSupportMode != NULL)
         {
             currInstanceInSupportMode->SetInSupportMode(false);
@@ -1238,6 +1236,7 @@ void GreenTech::ChangeToModelMode()
     proxy_modeledit->show();
     proxy_printedit->hide();
     proxy_image->hide();
+    SetTool("MODELSELECT");
     pWorldView->setLayerValue(-1);
 }
 void GreenTech::ChangeToSupportMode()
@@ -1423,6 +1422,7 @@ void GreenTech::ShowTheImage(bool show)
 
 void GreenTech::GreenTechSlice()
 {
+    QString fileName = QFileDialog::getSaveFileName(this,tr("保存Gcode文件"), "", tr("Config Files (*.gcode)"));
     if(modelPath=="")
     {
         qDebug()<<"You didn't load any file";
@@ -1430,10 +1430,11 @@ void GreenTech::GreenTechSlice()
     else
     {
         char*  ch;
-        QByteArray ba = modelPath.toLatin1();
+        QByteArray ba = "./print.stl";
         ch=ba.data();
         qDebug()<<modelPath;
-        char* target = "D:/BaiduYunDownload/Pudding-for-display/fuck.gcode";
+        char* target = fileName.toLatin1().data();
+
         Enable_User_Waiting_Cursor();
         processor->setTargetFile(target);
         processor->processFile(ch);
@@ -1499,5 +1500,15 @@ void GreenTech::RemoveAllSupport()
 //        tp->RemoveSupport(tp->GetSupportList()[s]);
 //    }
     UpdateInterface();
-
+}
+void GreenTech::SupportKind(bool type)
+{
+    if(type)
+    {
+        processor->setSupport(30);
+    }
+    else
+    {
+        processor->setSupport(-1);
+    }
 }

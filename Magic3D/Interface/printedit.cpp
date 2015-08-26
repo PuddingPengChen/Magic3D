@@ -202,3 +202,17 @@ void PrintEdit::on_toolButton_clicked()
     ui->InforBrowser->clear();
 }
 
+
+
+
+void PrintEdit::on_radioButton_clicked(bool checked)    //开启cura的支撑结构
+{
+    if(checked)
+    {
+        emit Sig_curaSupport(true);
+    }
+    else
+    {
+        emit Sig_curaSupport(false);
+    }
+}

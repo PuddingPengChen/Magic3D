@@ -802,12 +802,12 @@ void WorldView::mousePressEvent(QGraphicsSceneMouseEvent *event)
      mouseLastPos = event->scenePos();
      mouseDownInitialPos = event->scenePos();
 
-
-//     if(this->itemAt(QPointF(mouseLastPos.x(),mouseLastPos.y())))
-//     {
-//        event->accept();
-//     }
-//     else
+      QTransform po;
+     if(this->itemAt(QPointF(mouseLastPos.x(),mouseLastPos.y()),po))
+     {
+        event->accept();
+     }
+     else
      {
          if(event->button() == Qt::MiddleButton)
          {

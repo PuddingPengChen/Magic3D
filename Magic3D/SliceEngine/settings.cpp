@@ -14,20 +14,20 @@
 
 ConfigSettings::ConfigSettings()
 {
-    SETTING(layerThickness, 100);
-    SETTING(initialLayerThickness, 100);
+    SETTING(layerThickness, 300);
+    SETTING(initialLayerThickness, 500);
     SETTING(filamentDiameter, 2890);
     SETTING(filamentFlow, 100);
     SETTING(layer0extrusionWidth, 600);
     SETTING(extrusionWidth, 400);
-    SETTING(insetCount, 2);
-    SETTING(downSkinCount, 6);
-    SETTING(upSkinCount, 6);
+    SETTING(insetCount,2);
+    SETTING(downSkinCount,6);
+    SETTING(upSkinCount,6);
     SETTING(sparseInfillLineDistance, 100 * extrusionWidth / 20);
-    SETTING(infillOverlap, 15);
-    SETTING(skirtDistance, 6000);
-    SETTING(skirtLineCount, 1);
-    SETTING(skirtMinLength, 0);
+    SETTING(infillOverlap,15);
+    SETTING(skirtDistance,6000);
+    SETTING(skirtLineCount,1);
+    SETTING(skirtMinLength,0);
 
     SETTING(initialSpeedupLayers, 4);
     SETTING(initialLayerSpeed, 20);
@@ -38,45 +38,47 @@ ConfigSettings::ConfigSettings()
     SETTING(moveSpeed, 150);
     SETTING(fanFullOnLayerNr, 2);
 
-    SETTING(supportType, 0);
+    SETTING(supportType,0);
     SETTING(supportAngle, -1);
-    SETTING(supportEverywhere, 0);
+    SETTING(supportEverywhere,0);
     SETTING(supportLineDistance, sparseInfillLineDistance);
-    SETTING(supportXYDistance, 700);
-    SETTING(supportZDistance, 150);
-    SETTING(supportExtruder, -1);
+    SETTING(supportXYDistance,700);
+    SETTING(supportZDistance,150);
+    SETTING(supportExtruder,-1);
 
-    SETTING(retractionAmount, 4500);
-    SETTING(retractionSpeed, 45);
-    SETTING(retractionAmountExtruderSwitch, 14500);
-    SETTING(retractionMinimalDistance, 1500);
+    SETTING(retractionAmount,4500);
+    SETTING(retractionSpeed,45);
+    SETTING(retractionAmountExtruderSwitch,14500);
+    SETTING(retractionMinimalDistance,1500);
     SETTING(minimalExtrusionBeforeRetraction, 100);
-    SETTING(retractionZHop, 0);
+    SETTING(retractionZHop,1000);    //printchooclate
 
-    SETTING(enableCombing, 1);
+    SETTING(enableCombing,1);
     SETTING(enableOozeShield, 0);
     SETTING(wipeTowerSize, 0);
     SETTING(multiVolumeOverlap, 0);
-    SETTING2(objectPosition.X, posx, 102500);
-    SETTING2(objectPosition.Y, posy, 102500);
+//    SETTING2(objectPosition.X, posx, 102500);
+//    SETTING2(objectPosition.Y, posy, 102500);
+    SETTING2(objectPosition.X, posx, 72500);
+    SETTING2(objectPosition.Y, posy, 72500);
     SETTING(objectSink, 0);
 
     SETTING(raftMargin, 5000);
     SETTING(raftLineSpacing, 1000);
     SETTING(raftBaseThickness, 0);
     SETTING(raftBaseLinewidth, 0);
-    SETTING(raftInterfaceThickness, 0);
-    SETTING(raftInterfaceLinewidth, 0);
+    SETTING(raftInterfaceThickness,0);
+    SETTING(raftInterfaceLinewidth,0);
 
-    SETTING(minimalLayerTime, 5);
-    SETTING(minimalFeedrate, 10);
+    SETTING(minimalLayerTime,5);
+    SETTING(minimalFeedrate,10);
     SETTING(coolHeadLift, 0);
-    SETTING(fanSpeedMin, 100);
-    SETTING(fanSpeedMax, 100);
+    SETTING(fanSpeedMin,100);
+    SETTING(fanSpeedMax,100);
 
     SETTING(fixHorrible, 0);
     SETTING(spiralizeMode, 0);
-    SETTING(gcodeFlavor, GCODE_FLAVOR_ULTIGCODE);//设置G-code种类
+    SETTING(gcodeFlavor,GCODE_FLAVOR_REPRAP);//设置G-code种类
 
     memset(extruderOffset, 0, sizeof(extruderOffset));
     SETTING(extruderOffset[1].X, 0);
@@ -90,24 +92,25 @@ ConfigSettings::ConfigSettings()
     //毫米为单位
     //设置成据对定位
     //移动到远点
+    //        "M109 S210  "            "G28           ;Home\n"
     startCode =
-        "M109 S210     ;Heatup to 210C\n"
+
         "G21           ;metric values\n"
         "G90           ;absolute positioning\n"
-        "G28           ;Home\n"
         "G1 Z15.0 F300 ;move the platform down 15mm\n"
         "G92 E0        ;zero the extruded length\n"
         "G1 F200 E5    ;extrude 5mm of feed stock\n"
         "G92 E0        ;zero the extruded length again\n";
     endCode =
+        "G1 Z30 F500"
         "M104 S0                     ;extruder heater off\n"
+        "G1 X0 Y0"
         "M140 S0                     ;heated bed heater off (if you have it)\n"
-        "G91                            ;relative positioning\n"
-        "G1 E-1 F300                    ;retract the filament a bit before lifting the nozzle, to release some of the pressure\n"
-        "G1 Z+0.5 E-5 X-20 Y-20 F9000   ;move Z up a bit and retract filament even more\n"
-        "G28 X0 Y0                      ;move X/Y to min endstops, so the head is out of the way\n"
+        "G91                         ;relative positioning\n"
+        "G1 E-10 F300                 ;retract the filament a bit before lifting the nozzle, to release some of the pressure\n"
         "M84                         ;steppers off\n"
         "G90                         ;absolute positioning\n";
+        ";end";
 }
 
 #undef STRINGIFY
