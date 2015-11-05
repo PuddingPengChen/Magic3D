@@ -5,6 +5,7 @@ QT       += core gui
 QT       += svg
 QT       += opengl
 QT       += network
+QT       += printsupport
 
 
 RESOURCES += \
@@ -73,7 +74,12 @@ HEADERS += \
     Uart/qextserialbase.h \
     Uart/qextserialenumerator.h \
     Uart/qextserialport.h \
-    Uart/win_qextserialport.h
+    Uart/win_qextserialport.h \
+    Interface/controlPanel/Plot/qcustomplot.h \
+    Interface/controlPanel/controlpanel.h \
+    Interface/controlPanel/printthread.h \
+    Interface/controlPanel/readgcode.h \
+    Interface/controlPanel/settingdialog.h
 
 SOURCES += \
     geometric.cpp \
@@ -121,7 +127,11 @@ SOURCES += \
     Uart/qextserialbase.cpp \
     Uart/qextserialenumerator.cpp \
     Uart/qextserialport.cpp \
-    Uart/win_qextserialport.cpp
+    Uart/win_qextserialport.cpp \
+    Interface/controlPanel/Plot/qcustomplot.cpp \
+    Interface/controlPanel/controlpanel.cpp \
+    Interface/controlPanel/printthread.cpp \
+    Interface/controlPanel/settingdialog.cpp
 
 FORMS += \
     Interface/configset.ui \
@@ -130,6 +140,8 @@ FORMS += \
     Interface/mainbutton.ui \
     Interface/modeledit.ui \
     Interface/painter.ui \
-    Interface/printedit.ui
+    Interface/printedit.ui \
+    Interface/controlPanel/controlpanel.ui \
+    Interface/controlPanel/settingdialog.ui
 RC_FILE = pynxl.rc
 

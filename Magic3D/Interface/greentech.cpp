@@ -32,7 +32,7 @@ GreenTech::GreenTech(QWidget *parent) :
     SliderValue = -1;
     LayThickness = 100;
     AddBase = false;
-    setWindowTitle(tr("游侠三维"));
+    setWindowTitle(tr("BingoFDM-Pro"));
     setWindowIcon(QIcon(":/image/logo1.ico"));
     //Create the worldview and attach it to the window
     pWorldView = new WorldView(0,this);
@@ -1435,6 +1435,7 @@ void GreenTech::GreenTechSlice()
         qDebug()<<modelPath;
         char* target = fileName.toLatin1().data();
 
+        qDebug()<<"fuck you!!";
         Enable_User_Waiting_Cursor();
         processor->setTargetFile(target);
         processor->processFile(ch);

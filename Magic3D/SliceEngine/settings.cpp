@@ -14,11 +14,11 @@
 
 ConfigSettings::ConfigSettings()
 {
-    SETTING(layerThickness, 300);
-    SETTING(initialLayerThickness, 500);
+    SETTING(layerThickness, 50);
+    SETTING(initialLayerThickness, 150);
     SETTING(filamentDiameter, 2890);
     SETTING(filamentFlow, 100);
-    SETTING(layer0extrusionWidth, 600);
+    SETTING(layer0extrusionWidth, 400);
     SETTING(extrusionWidth, 400);
     SETTING(insetCount,2);
     SETTING(downSkinCount,6);
@@ -31,10 +31,10 @@ ConfigSettings::ConfigSettings()
 
     SETTING(initialSpeedupLayers, 4);
     SETTING(initialLayerSpeed, 20);
-    SETTING(printSpeed, 50);
-    SETTING(infillSpeed, 50);
-    SETTING(inset0Speed, 50);
-    SETTING(insetXSpeed, 50);
+    SETTING(printSpeed, 20);
+    SETTING(infillSpeed, 20);
+    SETTING(inset0Speed, 20);
+    SETTING(insetXSpeed, 20);
     SETTING(moveSpeed, 150);
     SETTING(fanFullOnLayerNr, 2);
 
@@ -94,7 +94,6 @@ ConfigSettings::ConfigSettings()
     //移动到远点
     //        "M109 S210  "            "G28           ;Home\n"
     startCode =
-
         "G21           ;metric values\n"
         "G90           ;absolute positioning\n"
         "G1 Z15.0 F300 ;move the platform down 15mm\n"

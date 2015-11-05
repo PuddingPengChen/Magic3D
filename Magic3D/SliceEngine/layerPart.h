@@ -24,4 +24,5 @@ void createLayerParts(SliceVolumeStorage& storage, Slicer* slicer, int unionAllT
 
 void dumpLayerparts(SliceDataStorage& storage, const char* filename);
 
+void export_svg(SliceDataStorage &storage,const char* filename);
 #endif//LAYERPART_H

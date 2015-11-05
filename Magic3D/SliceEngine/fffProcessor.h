@@ -65,6 +65,9 @@ public:
             return false;
 
         processSliceData(storage);
+        std::string poi = "./here.svg";
+        export_svg(storage,poi.c_str());
+//        dumpLayerparts(storage,poi.c_str());
         writeGCode(storage);
 
         logProgress("process", 1, 1);//Report the GUI that a file has been fully processed.

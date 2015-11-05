@@ -90,3 +90,56 @@ void dumpLayerparts(SliceDataStorage& storage, const char* filename)
     fprintf(out, "</body></html>");
     fclose(out);
 }
+void export_svg(SliceDataStorage & storage, const char *filename)
+{
+    FILE* out = fopen(filename, "w");
+    fprintf(out, "<?xml version = \"1.0\" encoding= \"UTF-8\" standalone= \"yes\"?>\n");
+    fprintf(out,"<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n");
+    fprintf(out,"<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xmlns:slic3r=\"http://slic3r.org/namespaces/slic3r\">\n");
+//    Point3 modelSize = storage.modelSize;
+    Point3 modelMin = storage.modelMin;
+    Point3 modelMax = storage.modelMax;
+    Point3 modelSizes = modelMax - modelMin;
+//   log("the volumes layers size %d\n",storage.volumes[0].layers.size());
+   for(unsigned int i = 0;i<3;i++)
+   {
+       fprintf(out,"<g id = \"layer%d\" slic3r:z = \"%f\">\n",i,i*0.2);
+       fprintf(out, "	<polygon slic3r:type =\"contour\" points=\"");
+       fprintf(out, "%f,%f ",0.0,0.0);
+       fprintf(out, "%f,%f ",float(modelSizes.x)/1000.0,0.0);
+       fprintf(out, "%f,%f ",float(modelSizes.x)/1000.0,float(modelSizes.y)/1000.0);
+       fprintf(out, "%f,%f ",0.0,float(modelSizes.y)/1000.0);
+       fprintf(out, "\" style=\"fill:white\" />\n");
+       fprintf(out,"</g>\n");
+
+   }
+
+//   log("the modelSize.x is %f\n",float(modelSizes.x)/1000.0);
+//   log("the modelSize.y is %f\n",float(modelSizes.y)/1000.0);
+    for(unsigned int volumeIdx=0; volumeIdx<storage.volumes.size(); volumeIdx++)
+    {
+        for(unsigned int layerNr=0;layerNr<storage.volumes[volumeIdx].layers.size(); layerNr++)
+        {
+        fprintf(out,"<g id = \"layer%d\"  slic3r:z = \"%f\">\n",layerNr+3,storage.volumes[volumeIdx].layers[layerNr].sliceZ/1000.0+0.4);
+            SliceLayer* layer = &storage.volumes[volumeIdx].layers[layerNr];
+            for(unsigned int i=0;i<layer->parts.size();i++)
+            {
+                SliceLayerPart* part = &layer->parts[i];
+                for(unsigned int j=0;j<part->outline.size();j++)
+                {
+                    fprintf(out, "	<polygon slic3r:type =\"contour\" points=\"");
+                    for(unsigned int k=0;k<part->outline[j].size();k++)
+                        fprintf(out, "%f,%f ", float(part->outline[j][k].X-modelMin.x)/1000.0, float(part->outline[j][k].Y - modelMin.y)/1000.0);
+                    if (j == 0)
+                        fprintf(out, "\" style=\"fill:white\" />\n");
+                    else
+                        fprintf(out, "\" style=\"fill:black\" />\n");
+                }
+            }
+            fprintf(out, "</g>\n");
+        }
+    }
+    fprintf(out, "</svg>\n");
+    fclose(out);
+
+}
