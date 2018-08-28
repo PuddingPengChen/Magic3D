@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "name": "Ultimaker Original+",
+    "inherits": "ultimaker_original",
+    "metadata": {
+        "author": "Ultimaker",
+        "manufacturer": "Ultimaker B.V.",
+        "weight": 4,
+        "file_formats": "text/x-gcode",
+        "icon": "icon_ultimaker.png",
+        "platform": "ultimaker2_platform.obj",
+        "platform_texture": "UltimakerPlusbackplate.png",
+        "quality_definition": "ultimaker_original",
+        "first_start_actions": ["UMOCheckup", "BedLevel"],
+        "supported_actions": ["UMOCheckup", "BedLevel", "UpgradeFirmware"],
+        "machine_extruder_trains":
+        {
+            "0": "ultimaker_original_plus_extruder_0"
+        }
+    },
+
+    "overrides": {
+        "machine_name": { "default_value": "Ultimaker Original+" },
+        "machine_heated_bed": {
+            "default_value": true
+        },
+        "machine_max_feedrate_z": {
+            "default_value": 30
+        }
+    }
+}
