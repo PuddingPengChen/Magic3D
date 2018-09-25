@@ -159,7 +159,8 @@ void MeshGroup::finalize()
             Point3 object_min = mesh.min();
             Point3 object_max = mesh.max();
             Point3 object_size = object_max - object_min;
-            mesh_offset += Point3(-object_min.x - object_size.x / 2, -object_min.y - object_size.y / 2, -object_min.z);
+//            mesh_offset += Point3(-object_min.x - object_size.x / 2, -object_min.y - object_size.y / 2, -object_min.z);
+            mesh_offset += Point3(-object_min.x , -object_min.y , -object_min.z);
         }
         mesh.offset(mesh_offset + meshgroup_offset);
     }
