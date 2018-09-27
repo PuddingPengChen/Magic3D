@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = CuraEngine3
 TEMPLATE = app
 CONFIG += c++11
+QMAKE_CXXFLAGS +=  -Wno-unused-parameter
 
 
 SOURCES += main.cpp \

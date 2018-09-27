@@ -119,7 +119,6 @@ int main(int argc, char *argv[])
 
     }
     cp_slice(inpuut_str.toStdString(), out_str.toStdString());
-//    return a.exec();
     return 0;
 
 }
